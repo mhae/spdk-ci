@@ -30,6 +30,7 @@ jobs:
         spdk_path: ${{ env.spdk_path }}
     - name: autorun_unittest
       run: |
-        mkdir -p ./output/unittest
-        echo "SPDK_TEST_UNITTEST=1" > ./auto.conf
-        output_dir=./output/unittest ./spdk/autorun.sh ./auto.conf
+        exec launch-test.sh
+        # mkdir -p ./output/unittest
+        # echo "SPDK_TEST_UNITTEST=1" > ./auto.conf
+        # output_dir=./output/unittest ./spdk/autorun.sh ./auto.conf
