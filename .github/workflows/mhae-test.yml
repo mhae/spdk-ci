@@ -15,7 +15,7 @@ on:
 
 jobs:
   nvmf_hw_autorun:
-    runs-on: mhae-nvmf-runner
+    runs-on: self-hosted
     env:
       gerrit_ref: ${{ inputs.gerrit_ref }}
       spdk_path: './spdk'
