@@ -1,5 +1,5 @@
 ---
-name: example
+name: mhae-nvmf
 
 # Example workflow for self-hosted runners
 on:
