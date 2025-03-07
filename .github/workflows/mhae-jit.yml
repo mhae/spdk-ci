@@ -1,0 +1,34 @@
+---
+name: mhae-jit
+
+# Example workflow for self-hosted runners
+on:
+  # Runs when triggered manually via GitHub Actions page
+  workflow_dispatch:
+    inputs:
+      # Can use specific Gerrit refspec, otherwise pull latest SPDK master
+      gerrit_ref:
+        description: 'Gerrit refspec to test following refs/changes/XX/YYYYY/Z format'
+        required: false
+        type: string
+        default: ''
+
+jobs:
+  mhae-jit:
+    runs-on: [self-hosted, jit-test]
+    env:
+      gerrit_ref: ${{ inputs.gerrit_ref }}
+      spdk_path: './spdk'
+    steps:
+      # Required to use locally defined actions
+    - name: Checkout the spdk-ci repo locally
+      uses: actions/checkout@v4
+    - name: Checkout SPDK repo from Gerrit
+      uses: ./.github/actions/checkout_gerrit
+      with:
+        gerrit_ref: ${{ env.gerrit_ref }}
+        spdk_path: ${{ env.spdk_path }}
+    - name: autorun-nvmf
+      run: |
+        pwd
+        ls
