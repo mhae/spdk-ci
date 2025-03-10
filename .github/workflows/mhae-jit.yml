@@ -30,5 +30,6 @@ jobs:
         spdk_path: ${{ env.spdk_path }}
     - name: autorun-nvmf
       run: |
-        pwd
-        ls
+        mkdir -p ./output/unittest
+        echo "SPDK_TEST_UNITTEST=1" > ./auto.conf
+        output_dir=./output/unittest ./spdk/autorun.sh ./auto.conf
