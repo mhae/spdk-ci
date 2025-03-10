@@ -32,5 +32,13 @@ jobs:
       run: |
         cd spdk
         mkdir -p ./output/unittest
-        echo "SPDK_TEST_UNITTEST=1" > ./auto.conf
-        ./autorun.sh ./auto.conf
+        cat > funtest.conf << EOF
+        SPDK_RUN_FUNCTIONAL_TEST=1
+        SPDK_TEST_UNITTEST=0
+        SPDK_TEST_NVMF=1
+        SPDK_TEST_NVMF_TRANSPORT="rdma"
+        HUGEMEM=2048
+        # Set up the DEPENDENCY_DIR
+        DEPENDENCY_DIR=/home/vagrant
+        EOF
+        ./autorun.sh ./funtest.conf
