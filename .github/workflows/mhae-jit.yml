@@ -42,5 +42,5 @@ jobs:
         DEPENDENCY_DIR=/home/vagrant
         EOF
         # SRIOV hack (but does not work with in-box driver)
-        # sed -i 's/0xa2d6/0x101e/g' test/nvmf/common.sh
+        sed -i 's/0xa2d6/0x101e/g' test/nvmf/common.sh
         ./autorun.sh ./funtest.conf
