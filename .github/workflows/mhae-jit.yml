@@ -3,11 +3,11 @@ name: nvmf-rdma-test
 
 on:
     workflow_call:
-    inputs:
-      client_payload:
-        required: false
-        type: string
-        default: '
+        inputs:
+          client_payload:
+            required: false
+            type: string
+            default: ''
 
 jobs:
   hpe-nvmf-rdma:
